@@ -1,0 +1,16 @@
+import random
+
+class Dice:
+    def __init__(self):
+        self.result = 6
+    def roll_dice(self):
+        while True:
+            roll = input("press 'enter' key to roll dice, or 'q' to quit: ")
+            if roll == "q":
+                break
+            else:
+                self.result = random.randint(1,6)
+                print(self.result)
+
+dice = Dice()
+dice.roll_dice()
