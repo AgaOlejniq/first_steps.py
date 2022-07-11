@@ -1,0 +1,59 @@
+import random
+
+colors = ["red", "green", "blue", "silver", "yellow"]
+speed = ["slow", "medium", "fast"]
+low_points = [3,5,7]
+high_points = [10,15,20]
+
+aliens = [] 
+#make number of random aliens
+def make_new_aliens(number, strengh = 0):
+    for alien_number in range(number):
+        if strengh == 0:
+            new_alien = {
+            "color" : random.choice(colors), 
+            "speed" : random.choice(speed),
+            "points" : random.choice(low_points) 
+            }
+        if strengh > 0:
+            new_alien = {
+            "color" : random.choice(colors), 
+            "speed" : random.choice(speed),
+            "points" : random.choice(high_points)
+            }
+
+        aliens.append(new_alien)
+    #total number of aliens
+    print(f"Total number of aliens: {len(aliens)}.")
+    print("...")
+
+make_new_aliens(30)
+make_new_aliens(20, strengh= 1)
+
+#show first 5 aliens
+for alien in aliens[:5]:
+    print(alien)
+
+green_aliens = []
+for green_alien in range(30):
+    new_green_alien = {
+        "color" : "green",
+        "speed" : random.choice(speed[:2]),
+        "points" : 1
+    }
+    green_aliens.append(new_green_alien)
+
+for green_alien in green_aliens[:5]:
+    print(green_alien)
+
+for green_alien in green_aliens[:3]:
+    if green_alien["color"] == "green":
+        green_alien["color"] = "yellow"
+        green_alien["speed"] = "slow"
+        green_alien["points"] = 10
+for green_alien in green_aliens[:5]:
+    print(green_alien)
+print()
+
+for alien in aliens:
+    print(alien)
