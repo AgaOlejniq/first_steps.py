@@ -3,7 +3,7 @@ import random
 import time
 import os
 
-lottery_log_dir = os.path.dirname(__file__) + r"\lottery_log"
+lottery_log_dir = os.path.dirname(__file__) + r"\lottery_log.txt"
 print(lottery_log_dir)
 
 timeData = time.localtime()
