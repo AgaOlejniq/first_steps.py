@@ -1,7 +1,6 @@
 from datetime import datetime
 import random
 import time
-import datetime
 import os
 
 lottery_log_dir = os.path.dirname(__file__) + r"\lottery_log"
