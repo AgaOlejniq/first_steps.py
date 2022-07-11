@@ -1,0 +1,38 @@
+from datetime import datetime
+import random
+import time
+import datetime
+import os
+
+lottery_log_dir = os.path.dirname(__file__) + r"\lottery_log"
+print(lottery_log_dir)
+
+timeData = time.localtime()
+print(time.strftime("%d/%m/%Y %H:%M:%S", timeData))
+
+
+class Lottery:
+    '''Simple attempt to simulate lottery.'''
+    def __init__(self):
+        self.numbers = [x for x in range(1,101)]
+        random.shuffle(self.numbers)
+
+    def start_lottery(self):
+        '''Start new lottery.'''
+        f = 0
+        winning_numbers = []
+        while f < 5:
+            winning_number = self.numbers.pop()
+            winning_numbers.append(winning_number)
+            f += 1
+        print("Today's winning nombers are:")
+        for number in winning_numbers:
+            print(f"\t-{number}")
+            time.sleep(0.5)
+
+        with open(lottery_log_dir, "a") as log:
+            log.write(f"\n{winning_numbers} - {time.strftime('%d/%m/%Y %H:%M:%S')}")
+
+
+lottery1 = Lottery()
+lottery1.start_lottery()
