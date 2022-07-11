@@ -1,0 +1,37 @@
+'''A class that can be used todescribe a car.'''
+
+class Car:
+    '''A simple attempt do represent a car.'''
+    def __init__(self, manufacturer, model, year):
+        self.manufacturer = manufacturer
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        '''Return a neatly formatted descriptive name.'''
+        long_name = f"{self.year} {self.manufacturer} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        '''Print a statement showing the car's mileage'''
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+    def upgrade_odometer(self, mileage):
+        '''
+        Set the odometer.
+        Reject the change if it attempts to roll the odometer back.  
+        '''
+        if self.odometer_reading <= mileage:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+    def increment_odometer(self, miles):
+        '''Add the given amount to the odometer reading.'''
+        if miles > 0:
+            self.odometer_reading += miles
+        else:
+            print("You can't roll back an odometer!")
+    def fill_gas_tank(self):
+        print("Gas tank filled.")
