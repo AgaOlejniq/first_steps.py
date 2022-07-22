@@ -13,7 +13,6 @@ class Game:
         pygame.display.set_caption("Rain")
 
         self.drops = pygame.sprite.Group()
-
         self.make_rain()
 
     def run(self):
@@ -21,7 +20,7 @@ class Game:
             pygame.init()
             self.check_events()
             self.update_rain()
-            print(len(self.drops))
+            #print(len(self.drops))
 
             self.update_screen()
 
@@ -57,13 +56,10 @@ class Game:
         for row_num in range(drops_y):
             for drop_num in range(drops_x):
                 self.make_drop(drop_num, row_num)
-    
 
     def update_rain(self):
-    
         for drop in self.drops.sprites():
             drop.rect.y += 3
-        
         self._remove_rain()
         if len(self.drops) <= 7:
             self.make_rain()
@@ -71,17 +67,9 @@ class Game:
     def _remove_rain(self):
         for drop in self.drops.copy():
             if drop.rect.top >= self.screen_rect.bottom:
-                self.drops.remove(drop)
-
-
-        #if len(self.drops) < :
-        #    new_bullet = Bullet(self)
-        #    self.bullets.add(new_bullet)
-            
-            
+                self.drops.remove(drop)     
             
     def update_screen(self):
-        
         self.screen.fill((120,120,120))
         self.drops.draw(self.screen)
         pygame.display.flip()
@@ -99,14 +87,6 @@ class Rain(Sprite):
 
         #store positon 
         self.y = float(self.rect.y)
-
-        #rain fall
-        #self.rain_speed = 3
-
-    #def update(self):
-    #    
-    #    self.y += self.rain_speed
-    #    self.rect.y = self.y
 
 
 g1 = Game()
